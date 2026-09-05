@@ -170,4 +170,4 @@ tests\test_api.py ......                                                 [100%]
 ## 10. Known Limitations
 1.  **High Null Rates:** Identity features (OS, Browser, Device) have a ~75% missing rate. While LightGBM splits natively on NaNs, predictions on checkout-only transactions rely heavily on card velocity (`C` columns) and transaction amounts.
 2.  **No Causal Proof:** SHAP attributions reflect how the model weighs features relative to the training distribution and should not be interpreted as physical real-world causation.
-3.  **PR-AUC Mismatch:** The final test set PR-AUC is **0.4505** (compared to validation's **0.5372**), indicating standard temporal drift. Periodical re-training is required to maintain accuracy.
+3.  **PR-AUC Mismatch:** The final test set PR-AUC is **0.5459** (compared to validation's **0.6185**), indicating standard temporal drift. Periodical re-training is required to maintain accuracy.

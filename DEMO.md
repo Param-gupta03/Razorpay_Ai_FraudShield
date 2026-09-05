@@ -1,6 +1,6 @@
-# FraudShield AI — Presentation & Demo Guide
+# FraudShield AI — Presentation & Pitch Video Guide
 
-This guide describes how to run a polished, 2-minute presentation demo of **FraudShield AI** for merchants.
+This guide describes how to deliver a compelling, 5-minute pitch video presentation of **FraudShield AI** for merchants and risk leadership.
 
 ## 1. Prerequisites
 Ensure both servers are running locally:
@@ -9,45 +9,49 @@ Ensure both servers are running locally:
 
 ---
 
-## 2. The 2-Minute Demo Script & Flow
+## 2. The 5-Minute Pitch Video Script & Flow (300 Seconds)
 
-### STEP 1: Introduce FraudShield AI (Duration: 20 seconds)
+### STEP 1: The Problem & Why-Now (Duration: ~45 seconds)
 1.  Open the web dashboard at `http://localhost:3000`.
 2.  **Script Cue:** 
-    > *"Welcome to FraudShield AI. Online merchants lose money to direct fraud (average cost: $150 per chargeback) and false declination friction. FraudShield AI is a defense-only risk advisory engine that scores transactions chronologically, helping human risk teams approve transactions safely and catch fraud."*
-3.  Point to the **KPI Cards** and **Business Cost Management Chart** on the dashboard. Mention the `$200,175` estimated net savings benefit on the test set.
+    > *"Welcome to FraudShield AI. E-commerce merchants today face a multi-million-dollar dilemma: direct fraud losses average $150 per chargeback incident, but overly aggressive rule-based fraud filters create false decline friction that turns away loyal customers. Why now? Card-not-present transaction volumes are peaking, fraudsters adapt faster than static rule engines, and opaque AI models create compliance and chargeback audit nightmares. FraudShield AI bridges this gap with an explainable, defense-only advisory system that scores transactions along a strict chronological timeline."*
+3.  Point to the **KPI Cards** and **Business Cost Management Chart** on the dashboard. Highlight the **$232,770** estimated net savings benefit on the test set ($229,680 managed cost vs. $462,450 unmanaged baseline fraud cost).
 
-### STEP 2: Load a Historic Transaction (Duration: 20 seconds)
+### STEP 2: Live Single Transaction Scoring (Duration: ~60 seconds)
 1.  Click the **Transactions** link in the navigation header.
-2.  Explain that these are real, audited demo transactions from Vesta data.
-3.  Find transaction **`#443491`** (a high-risk credit transaction) in the table and click **`Analyze`** on the right.
-4.  **Script Cue:** 
-    > *"Let's test the system in real-time. I'm selecting transaction #443491—a high-value transaction—and loading it into the Risk Analyzer."*
+2.  Explain that these are real, audited demo transactions from the IEEE-CIS / Vesta dataset.
+3.  Find transaction **`#443491`** (a high-velocity credit transaction) in the table and click **`Analyze`** on the right.
+4.  You are now on the **Risk Analysis** tab with populated form inputs and raw payload.
+5.  Click **`Analyze Transaction`** (instant scoring in < 0.1s prediction latency).
+6.  Point to the real-time scoring results:
+    *   **Fraud Probability:** **96.87%** (Risk Level: **HIGH**).
+    *   **Recommended Action:** **`REVIEW TRANSACTION`** (Exceeds the frozen cost-minimizing operating threshold of 0.05).
+    *   **Decision Cost:** Estimated at **$0.47** (Manual review overhead $(1 - 0.9687) \times \$15.00$).
+7.  **Script Cue:** 
+    > *"In under 100 milliseconds, FraudShield AI outputs a calibrated 96.87% fraud probability. Crucially, our frozen operational threshold is 0.05. Any transaction scoring below 0.05 is auto-approved with zero customer friction. Scores between 0.05 and 0.30 fall into the MEDIUM risk band, while scores at or above 0.30 are marked HIGH risk. Both MEDIUM and HIGH trigger a human-assisted review queue rather than an automated decline, safeguarding legitimate checkout revenues."*
 
-### STEP 3: Run the Risk Engine (Duration: 30 seconds)
-1.  You are now on the **Risk Analysis** tab. Notice the forms and payload JSON are populated.
-2.  Click **`Analyze Transaction`**. (Takes &lt; 0.1s prediction latency).
-3.  Point to the results:
-    *   **Fraud Probability:** **87.3%** (High risk).
-    *   **Recommended Action:** **`REVIEW TRANSACTION`** (Exceeds the cost-minimizing threshold of 10%).
-    *   **Decision Cost:** Estimated at **$1.90** (Cost of manual review offset by avoiding the $150 fraud loss).
-4.  **Script Cue:** 
-    > *"Within milliseconds, FraudShield AI computes that this transaction has an 87.3% probability of being fraudulent. Because this exceeds our tuned operating threshold of 10%, the engine recommends reviewing the transaction instead of auto-declining, protecting both revenue and user experience."*
+### STEP 3: False-Positive-Cost Economics & Threshold Optimization (Duration: ~60 seconds)
+1.  Scroll or switch to the **Risk Policy & Methodology** tab (About tab) or refer to the Cost Breakdown chart on the dashboard.
+2.  **Script Cue:** 
+    > *"Why did we freeze our operational threshold at 0.05 rather than the standard 0.50? Because real-world fraud exhibits severe cost asymmetry. A false positive costs an estimated $15 in manual review labor and customer friction, but a false negative—a missed fraud chargeback—costs $150 in lost inventory and bank penalties. That is a 10-to-1 asymmetry. By formulating our objective function around Expected Cost = P(Fraud) * $150 for Approvals and (1 - P(Fraud)) * $15 for Reviews, our validation optimization proved that a 0.05 operating cutoff minimizes total financial loss. Note that while 0.05 is the operational gate triggering reviews, 0.10 marks our internal boundary where review queue prioritization escalates."*
+3.  Highlight the operational review rate: **8.31%**, ensuring the manual review queue remains operationally lean and sustainable for merchant operations teams.
 
-### STEP 4: Explain SHAP attributions (Duration: 30 seconds)
-1.  Scroll down to the section **"Why was this transaction flagged?"**.
-2.  Show the side-by-side SHAP positive and negative factors:
-    *   **Risk-Increasing:** `C14`, `TransactionAmt`, `V54`
-    *   **Risk-Reducing:** `D1`, `card3_count`, `V314`
+### STEP 4: SHAP Explainability & Non-Causal Language (Duration: ~45 seconds)
+1.  On the Risk Analysis tab, scroll down to **"Why was this transaction flagged?"**.
+2.  Show the side-by-side SHAP positive and negative attribution cards:
+    *   **Risk-Increasing Factors:** `C14`, `TransactionAmt`, `V54`
+    *   **Risk-Reducing Factors:** `D1`, `card3_count`, `V314`
 3.  **Script Cue:** 
-    > *"Instead of a black box, FraudShield AI returns the exact SHAP attributions. In this case, elevated transaction counts in C14 and transaction amount increases pushed the risk up, while card age in D1 and card billing counts mitigated some risk. Crucially, the language is descriptive: it shows what features contributed to the score rather than making causal claims."*
+    > *"FraudShield AI never operates as a black box. For every scored checkout, our TreeExplainer calculates exact local SHAP attributions. Notice our strict non-causal language: the system reports that high transaction velocity counts in C14 and elevated checkout amounts 'contributed to higher predicted risk', while card history age in D1 'mitigated risk'. We explicitly describe mathematical feature contributions rather than claiming real-world causality, providing actionable, audit-ready context for human analysts."*
 
-### STEP 5: Conclude with Honest Performance (Duration: 20 seconds)
+### STEP 5: Honest Metrics, Temporal Drift & Defense-Only Guardrails (Duration: ~60 seconds)
 1.  Click **Model Performance** in the header navigation.
-2.  Show the comparison between **Validation** and **Untouched Temporal Test** performance metrics.
-3.  Point to the test confusion matrix (TP: 1,774 | TN: 81,103 | FP: 4,395 | FNR: 42.46%).
+2.  Show the comparison between **Validation** and the **Untouched Temporal Test** performance metrics.
+3.  Point to the untouched test confusion matrix:
+    *   **TP:** `2,080` | **TN:** `80,216` | **FP:** `5,282` | **FN:** `1,003` | **FNR:** `32.53%`
+    *   **Test Recall:** `67.47%` | **Precision:** `28.25%` | **PR-AUC:** `0.5459` | **ROC-AUC:** `0.9057` | **Brier Score:** `0.0220`
 4.  **Script Cue:** 
-    > *"Finally, FraudShield AI is built on honest evaluations. We split our data chronologically. On our untouched temporal test set, we achieved a 67.5% fraud recall and saved our mock merchant over $232k. The temporal drop from validation shows the reality of drift, indicating that model updates are key in production. Thank you."*
+    > *"Finally, FraudShield AI is built upon rigorous, honest machine learning standards. We never use random k-fold splits, which leak future transaction patterns into past training data. We enforce strict out-of-time chronological splitting. On our final untouched test split, the model achieved a 67.47% fraud recall and delivered $232,770 in net financial savings. We openly disclose that PR-AUC dropped from 0.6185 on validation to 0.5459 on untouched test data—a real-world demonstration of temporal concept drift that highlights the necessity of continuous monitoring. Most importantly, FraudShield AI is engineered strictly as defense-only, nothing offense-capable: it advises human teams, optimizes review queues, and protects honest merchants without punitive automated declines. Thank you."*
 
 ---
 
@@ -70,8 +74,12 @@ Use these pre-audited cases in the `Transactions` tab for immediate testing:
 ---
 
 ## 4. Key Metrics to Highlight
-*   **Frozen Threshold:** `0.05` (Optimal threshold selected on validation).
-*   **Test Set Recall:** `67.47%` (More than half of imbalanced fraud caught).
-*   **Test Set Net Benefit:** `$232,770.00` savings.
-*   **Review Rate:** `8.31%` (Low review overhead for merchants).
-*   **Brier Calibration Score:** `0.0220` (Highly calibrated probabilities).
+*   **Frozen Operating Threshold:** `0.05` (Loss-minimizing cutoff selected on validation).
+*   **Test Set Recall:** `67.47%` (FNR: `32.53%`).
+*   **Test Set Precision:** `28.25%`.
+*   **Test Confusion Matrix:** TP: `2,080` | TN: `80,216` | FP: `5,282` | FN: `1,003`.
+*   **Test PR-AUC:** `0.5459` (Validation PR-AUC: `0.6185`).
+*   **Test ROC-AUC:** `0.9057`.
+*   **Brier Calibration Score:** `0.0220` (Calibrated probabilities).
+*   **Test Set Net Benefit:** `$232,770.00` savings ($229,680.00 expected cost vs. $462,450.00 baseline).
+*   **Review Rate:** `8.31%` (Operationally manageable merchant overhead).

@@ -19,15 +19,18 @@ The diagram below maps out the request lifecycle of a transaction through FraudS
                                    ↓
                          LightGBM Classifier
                                    ↓
-                          Fraud Probability
+                     Calibrated Fraud Probability
                                    ↓
-                     Tuned Expected Cost Threshold (0.05)
-                                ↙          ↘
-                  Prob < 0.05                  Prob >= 0.05
-                     ↙                              ↘
-            APPROVE ACTION                     REVIEW ACTION
-                     ↘                              ↙
-                       SHAP TreeExplainer Local Values
+                         Three-Tier Risk Policy
+                 ┌─────────────────┼─────────────────┐
+                 ↓                 ↓                 ↓
+            Prob < 0.05     0.05 <= Prob < 0.30  Prob >= 0.30
+             (LOW Risk)       (MEDIUM Risk)       (HIGH Risk)
+                 ↓                 ↓                 ↓
+           APPROVE ACTION    REVIEW ACTION     REVIEW ACTION
+                 └─────────────────┼─────────────────┘
+                                   ↓
+                    SHAP TreeExplainer Local Values
                                    ↓
                        Non-Causal Text Formatting
                                    ↓
@@ -58,7 +61,7 @@ The diagram below maps out the request lifecycle of a transaction through FraudS
 
 ### 4. LightGBM Risk Classifier
 *   **Module:** `models/lightgbm_final.pkl`
-*   Evaluates the feature matrix to output a calibrated probability $P(\text{isFraud} = 1)$.
+*   Evaluates the feature matrix to output a calibrated probability $P(\text{isFraud} = 1)$ (supported by a test Brier score of `0.0220`).
 *   LightGBM is chosen because it natively handles missing values (which are common in identity features) and is highly efficient.
 
 ### 5. Risk Policy & Expected Cost Gate

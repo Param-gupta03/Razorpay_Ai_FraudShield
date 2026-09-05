@@ -112,7 +112,7 @@ Open the interactive dashboard UI at [http://localhost:3000](http://localhost:30
 ---
 
 ## 8. Important Limitations
-1.  **Temporal Shift:** The test set PR-AUC dropped from `0.5372` to `0.4505`. This confirms temporal drift and requires periodic re-training and model updates.
+1.  **Temporal Shift:** The test set PR-AUC dropped from `0.6185` (validation) to `0.5459` (untouched test). This confirms temporal drift and requires periodic re-training and model updates.
 2.  **No Causal Proof:** SHAP attributions represent statistical weight relative to training baselines, not real-world physical causation.
 3.  **Missing Identity Information:** Device OS and Browser configurations are missing for ~75% of raw transactions, forcing high reliance on check-out velocity.
 4.  **No Production Readiness Without Qualification:** Stated financial cost figures use demonstration assumptions and must be validated with merchant-specific parameters before production launch.
