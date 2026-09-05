@@ -1,0 +1,78 @@
+[
+    {
+        "TransactionIndex": 441478,
+        "ActualLabel": 1,
+        "FraudProbability": 0.812220975085184,
+        "TopPositiveFactors": [
+            "C1 (11.0): +1.2276",
+            "C8 (5.0): +0.6051",
+            "C13 (2.0): +0.4528",
+            "V294 (1.0): +0.4377",
+            "card6 (credit): +0.4286"
+        ],
+        "TopNegativeFactors": [
+            "TransactionAmt (13.279999732971191): -0.2198",
+            "id_19 (266.0): -0.0742",
+            "hour (19): -0.0429",
+            "TransactionAmt_log (2.658859968185425): -0.0428",
+            "TransactionAmt_decimal (0.2799997329711914): -0.0397"
+        ]
+    },
+    {
+        "TransactionIndex": 443491,
+        "ActualLabel": 1,
+        "FraudProbability": 0.9687236452598735,
+        "TopPositiveFactors": [
+            "C1 (24.0): +1.4812",
+            "C13 (1.0): +0.7932",
+            "V258 (2.0): +0.6132",
+            "V152 (3.0): +0.5964",
+            "C4 (10.0): +0.5838"
+        ],
+        "TopNegativeFactors": [
+            "id_30 (iOS 11.3.0): -0.2803",
+            "id_31 (mobile safari generic): -0.1972",
+            "ProductCD (R): -0.1545",
+            "M4 (MISSING): -0.0797",
+            "D1 (63.0): -0.0653"
+        ]
+    },
+    {
+        "TransactionIndex": 437512,
+        "ActualLabel": 0,
+        "FraudProbability": 0.006241092010098423,
+        "TopPositiveFactors": [
+            "C13 (1.0): +0.1765",
+            "P_emaildomain (MISSING): +0.1033",
+            "dist1 (nan): +0.1017",
+            "M4 (M0): +0.0988",
+            "C5 (0.0): +0.0911"
+        ],
+        "TopNegativeFactors": [
+            "card5 (166.0): -0.2124",
+            "TransactionAmt (34.0): -0.2097",
+            "card6 (debit): -0.1576",
+            "C11 (1.0): -0.1018",
+            "M3 (T): -0.0961"
+        ]
+    },
+    {
+        "TransactionIndex": 450846,
+        "ActualLabel": 0,
+        "FraudProbability": 0.014984853396864135,
+        "TopPositiveFactors": [
+            "card6 (credit): +0.2378",
+            "C11 (2.0): +0.1553",
+            "D15 (16.0): +0.1358",
+            "DeviceInfo (MISSING): +0.1185",
+            "M4 (M2): +0.1098"
+        ],
+        "TopNegativeFactors": [
+            "P_emaildomain (hotmail.com): -0.2190",
+            "D13 (63.0): -0.2112",
+            "C14 (2.0): -0.1338",
+            "C1 (2.0): -0.0987",
+            "D6 (63.0): -0.0816"
+        ]
+    }
+]

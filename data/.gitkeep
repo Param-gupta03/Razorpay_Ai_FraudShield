@@ -1,0 +1,2 @@
+# This file ensures the data/ directory is tracked in git.
+# Raw CSV datasets (train_transaction.csv, train_identity.csv) are excluded via .gitignore due to GitHub file size limits (>100MB).

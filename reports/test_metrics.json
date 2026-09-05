@@ -1,0 +1,23 @@
+{
+    "Model": "LightGBM (Standard)",
+    "Threshold": 0.05,
+    "FALSE_POSITIVE_COST": 15.0,
+    "FALSE_NEGATIVE_COST": 150.0,
+    "Metrics": {
+        "Precision": 0.28253192067372995,
+        "Recall": 0.6746675316250406,
+        "F1": 0.39827668741024413,
+        "PR-AUC": 0.5459297123032539,
+        "ROC-AUC": 0.9057332200959993,
+        "Brier": 0.0219553093889585,
+        "TP": 2080,
+        "TN": 80216,
+        "FP": 5282,
+        "FN": 1003,
+        "FPR": 0.061779222905798965,
+        "FNR": 0.32533246837495944
+    },
+    "ExpectedCost": 229680.0,
+    "BaselineCost": 462450.0,
+    "NetBenefit": 232770.0
+}
